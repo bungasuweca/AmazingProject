@@ -37,6 +37,7 @@ export default function App() {
         title='Add groceries' 
         color="#395144" 
         onPress={startAddGoalHandler}
+        type="outline"
       />
      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancel={endAddGoalHandler} /> 
       <View style={styles.listContainer}>
