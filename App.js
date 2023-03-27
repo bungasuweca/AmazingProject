@@ -8,20 +8,35 @@ export default function App() {
   const [courseGoals, setCourseGoals] = useState([]);
 
   function addGoalHandler(enteredGoalText) {
-    setCourseGoals(currentCourseGoals => [
+    setCourseGoals((currentCourseGoals) => [
       ...courseGoals, {text: enteredGoalText, 
-        key: Math.random().toString()},
+        id: Math.random().toString()},
       ]);
+  }
+
+  function deleteGoalHandler(id) {
+    setCourseGoals(currentCourseGoals => {
+      return currentCourseGoals.filter((goal) => goal.id !== id);
+
+    });
   }
 
   return (
     <View style={styles.container}>
      <GoalInput onAddGoal={addGoalHandler} />
       <View style={styles.listContainer}>
-        <FlatList data={courseGoals} renderItem={(itemData) => {
-          itemData.index
-          return <GoalItem text={itemData.item.text} />
-        }} alwaysBounceVertical={false}/>
+        <FlatList data={courseGoals} 
+        renderItem={(itemData) => {
+            return(
+            <GoalItem 
+              text={itemData.item.text} 
+              id={itemData.item.id} 
+              onDeleteItem={deleteGoalHandler} 
+            />
+            );
+        }} 
+        keyExtractor={(item, index) => {return item.id}}
+        alwaysBounceVertical={false}/>
       </View>
     </View>
   );

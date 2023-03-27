@@ -18,8 +18,9 @@ function GoalInput(props) {
           style={styles.textInput}
           placeholder="What to buy today?"
           onChangeText={goalInputHandler}
+          value={enteredGoalText}
         />
-        <Button title="Add list" onPress={props.onAddGoal} />
+        <Button title="Add list" onPress={addGoalHandler} />
       </View>
     );
 }
