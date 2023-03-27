@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, TextInput, Button, Modal } from 'react-native';
+import { StyleSheet, View, TextInput, Button, Modal, Image } from 'react-native';
 
 function GoalInput(props) {
     const [enteredGoalText, setEnteredGoalText] = useState('');
@@ -15,6 +15,7 @@ function GoalInput(props) {
     return(
         <Modal visible={props.visible} animationType="slide">
             <View style={styles.inputContainer}>
+                <Image source={require ('../assets/img/grocery.png')} style={styles.img} />
                 <TextInput
                     style={styles.textInput}
                     placeholder="What to buy today?"
@@ -23,10 +24,10 @@ function GoalInput(props) {
                 />
                 <View style={styles.buttonContainer}>
                     <View style={styles.btn}>
-                        <Button title="Add list" color={'#D9ACF5'} onPress={addGoalHandler} />
+                        <Button title="Add list" color={'#395144'} onPress={addGoalHandler} />
                     </View>
                     <View style={styles.btn}>
-                        <Button title="Cancel" color={'#8785A2'}/>
+                        <Button title="Cancel" color={'#AA8B56'} onPress={props.onCancel} />
                     </View>
                 </View>
         </View>
@@ -41,15 +42,14 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 24,
         padding: 16,
-        borderBottom: 24,
-        borderBottomWidth: 1,
         borderBottomColor: '#ccc',
+        backgroundColor: '#F7F5EB',
     },
     textInput: {
+        // backgroundColor: '#F0EBCE',
         borderWidth: 1,
-        borderColor: '#ccc',
+        borderColor: '#8B7E74',
         width: '90%',
         padding: 8,
     },
@@ -61,6 +61,11 @@ const styles = StyleSheet.create({
     btn: {
         width: 150,
         marginHorizontal: 10,
+    },
+    img: {
+        width: 100,
+        height: 100,
+        margin: 20,
     },
 
 
