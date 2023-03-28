@@ -1,8 +1,9 @@
 import {useState} from 'react';
-import {StyleSheet, View, FlatList, Button} from 'react-native';
+import {StyleSheet, View, FlatList, Button, Text, Image} from 'react-native';
 
 import GoalItem from './components/GoalItem';
 import GoalInput from './components/GoalInput';
+import { ImageBackground } from 'react-native';
 
 export default function App() {
   const [modalIsVisible, setModalIsVisible] = useState(false);
@@ -53,6 +54,12 @@ export default function App() {
         }} 
         keyExtractor={(item, index) => {return item.id}}
         alwaysBounceVertical={false}/>
+        <View>
+        <Image source={require ('./assets/img/basket.png')} style={styles.img} />
+        <Text style={styles.txt}>
+            Tip: You could easily delete your list by tapping the item you've already bought ( •̀ ω •́ )/
+        </Text>
+        </View>
       </View>
     </View>
   );
@@ -65,6 +72,20 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   listContainer: {
+    paddingTop: '10%',
     flex: 5,
+  },
+  txt: {
+    paddingBottom: '8%',
+    textAlign: 'center',
+    color: '#395144',
+    opacity: 0.5,
+  },
+  img: {
+    resizeMode: 'cover',
+    height: 100,
+    width: 100,
+    opacity: 0.2,
+    alignSelf: 'center',
   },
 });
